@@ -3,6 +3,9 @@ import {component, html, useEffect, useState} from 'haunted';
 const SendDataToParent = (value) => {
 	const event = new CustomEvent('mycounteradd', {
 		bubbles: true,
+		detail: {
+			counter: value
+		}
 	});
 	console.log('se manda: ', value);
 	window.dispatchEvent(event);
