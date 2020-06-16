@@ -1,7 +1,19 @@
-import {component, html, useState} from 'haunted';
+import {component, html, useEffect, useState} from 'haunted';
 
-const Counter = () => {
-	const [count, setCount] = useState(0);
+const SendDataToParent = (value) => {
+	const event = new CustomEvent('mycounteradd', {
+		bubbles: true,
+	});
+	console.log('se manda: ', value);
+	window.dispatchEvent(event);
+};
+
+const Counter = ({start = 0}) => {
+	const [count, setCount] = useState(Number(start));
+
+	useEffect(() => {
+		SendDataToParent(count);
+	}, [count]);
 
 	return html`
 		<div>
@@ -12,5 +24,7 @@ const Counter = () => {
 		</div>
 	`;
 }
+
+Counter.observedAttributes = ['start'];
 
 customElements.define('my-counter', component(Counter));
