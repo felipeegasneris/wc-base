@@ -1,16 +1,16 @@
 import {component, html, useEffect, useState} from 'haunted';
 
-const SendDataToParent = (value) => {
-	const event = new CustomEvent('mycounteradd', {
+const SendDataToParent = (el, value) => {
+	const event = new CustomEvent('my-counter-add', {
 		bubbles: true,
 		detail: {
 			counter: value
 		}
 	});
-	window.dispatchEvent(event);
+	el.dispatchEvent(event);
 };
 
-const Counter = ({start = 0}) => {
+function Counter ({start = 0}) {
 	const [count, setCount] = useState(Number(start));
 
 	useEffect(() => {
@@ -18,7 +18,7 @@ const Counter = ({start = 0}) => {
 	}, [start]);
 
 	useEffect(() => {
-		SendDataToParent(count);
+		SendDataToParent(this, count);
 	}, [count]);
 
 	return html`
