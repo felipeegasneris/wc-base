@@ -7,12 +7,15 @@ const SendDataToParent = (value) => {
 			counter: value
 		}
 	});
-	console.log('se manda: ', value);
 	window.dispatchEvent(event);
 };
 
 const Counter = ({start = 0}) => {
 	const [count, setCount] = useState(Number(start));
+
+	useEffect(() => {
+		setCount(Number(start));
+	}, [start]);
 
 	useEffect(() => {
 		SendDataToParent(count);
