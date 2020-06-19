@@ -11,7 +11,7 @@ const SendDataToParent = (el, value) => {
 	el.dispatchEvent(event);
 };
 
-function Counter({start = 0}) {
+function Counter({start = 0, dsType = 'primary'}) {
 	const [count, setCount] = useState(Number(start));
 
 	useEffect(() => {
@@ -25,13 +25,13 @@ function Counter({start = 0}) {
 	return html`
 		<style>${styles}</style>
 		<div>
-			<button type="button" class="button" @click=${() => setCount(count + 1)}>
+			<button type="button" class="button button-${dsType}" @click=${() => setCount(count + 1)}>
           Increment : ${count}
       </button>
 		</div>
 	`;
 }
 
-Counter.observedAttributes = ['start'];
+Counter.observedAttributes = ['start', 'ds-type'];
 
 customElements.define('my-counter', component(Counter));

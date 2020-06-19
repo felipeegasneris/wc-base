@@ -2,7 +2,6 @@
     font-family: Arial, serif;
     border: none;
     font-size: inherit;
-    background: none;
     cursor: pointer;
     padding: 25px 80px;
     display: inline-block;
@@ -13,12 +12,27 @@
     outline: none;
     position: relative;
     border-radius: 5px;
-    background: #cb4e4e;
     color: #fff;
     box-shadow: 0 6px #ab3c3c;
     -webkit-transition: none;
     -moz-transition: none;
     transition: none;
+}
+
+.button-primary {
+    background: #cb4e4e;
+}
+
+.button-secondary {
+    background: #823aa0;
+}
+
+.button-info {
+    background: #fcad26;
+}
+
+.button-alert {
+    background: red;
 }
 
 .button:after {
