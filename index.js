@@ -1,4 +1,5 @@
 import {component, html, useEffect, useState} from 'haunted';
+import  styles from 'bundle-text:./index.css';
 
 const SendDataToParent = (el, value) => {
 	const event = new CustomEvent('my-counter-add', {
@@ -10,7 +11,7 @@ const SendDataToParent = (el, value) => {
 	el.dispatchEvent(event);
 };
 
-function Counter ({start = 0}) {
+function Counter({start = 0}) {
 	const [count, setCount] = useState(Number(start));
 
 	useEffect(() => {
@@ -22,10 +23,10 @@ function Counter ({start = 0}) {
 	}, [count]);
 
 	return html`
+		<style>${styles}</style>
 		<div>
-			<span>${count}</span>
-			<button type="button" @click=${() => setCount(count + 1)}>
-          Increment
+			<button type="button" class="button" @click=${() => setCount(count + 1)}>
+          Increment : ${count}
       </button>
 		</div>
 	`;

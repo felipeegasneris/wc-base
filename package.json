@@ -14,6 +14,6 @@
     "haunted": "^4.7.0"
   },
   "devDependencies": {
-    "parcel": "^1.12.4"
+    "parcel": "^2.0.0-nightly.300"
   }
 }
